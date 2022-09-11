@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>
+    TODO list
+    <a href="{% url 'tasks:task-add' %}" class="btn btn-primary link-to-page">
+        Add task
+    </a>
+  </h1>
+  <br>
+  {% if task_list %}
+    {% for task in task_list %}
+      <h4>
+          <strong>{{ task.content}} </strong>
+          {% if task.status %}
+              <span style="color:green">Completed</span>
+              <a href="{% url 'tasks:change-task-status' pk=task.id%}" class="btn btn-secondary link-to-page">
+              Undo
+              </a>
+          {% else %}
+              <span style="color:red">Not done</span>
+              <a href="{% url 'tasks:change-task-status' pk=task.id %}" class="btn btn-success link-to-page">
+              Complete
+              </a>
+          {% endif %}
+
+      </h4>
+      <p>Created: {{ task.created }}</p>
+      <p>
+          Tags: {% for tag in task.tags.all %}{{ tag.name }} {% endfor %}
+          <a href="{% url 'tasks:task-update' pk=task.id %} ">Update</a>
+          <a href="{% url 'tasks:task-delete' pk=task.id %} ">Delete</a>
+      </p>
+      <hr>
+  {% endfor %}
+  {% else %}
+    <p>There are no tasks in the list</p>
+  {% endif %}
+{% endblock %}
