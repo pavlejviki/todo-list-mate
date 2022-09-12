@@ -11,4 +11,10 @@ Django project for managing everyday tasks
 ## Demo
 
 ![Website Interface](homepage.png)
+![Website Interface](add_task.png)
+![Website Interface](update_task.png)
+![Website Interface](delete_task.png)
 ![Website Interface](tags.png)
+![Website Interface](add_tag.png)
+![Website Interface](update_tag.png)
+![Website Interface](delete_tag.png)

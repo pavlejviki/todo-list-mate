@@ -19,7 +19,7 @@ class TaskDeleteView(generic.DeleteView):
 
 
 class TaskUpdateView(generic.UpdateView):
-    model = Tag
+    model = Task
     form_class = TaskUpdateForm
     success_url = reverse_lazy("tasks:task-list")
 
