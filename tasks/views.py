@@ -53,9 +53,6 @@ class TagDeleteView(generic.DeleteView):
 
 def change_task_status(request, pk):
     task = Task.objects.get(id=pk)
-    if task.status:
-        task.status = False
-    else:
-        task.status = True
+    task.status = not task.status
     task.save()
     return redirect(reverse("tasks:task-list"))
